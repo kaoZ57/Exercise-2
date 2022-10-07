@@ -13,7 +13,8 @@ namespace Exercise_2
         {
             float cash = 100;
             int seclct;
-
+        UP:
+            Console.WriteLine("=======");
             Console.WriteLine("Account");
             Console.WriteLine("=======");
             Console.WriteLine("1. Deposit");
@@ -21,7 +22,7 @@ namespace Exercise_2
             Console.WriteLine("3. Check Balance");
             Console.WriteLine("0. Exit");
             Console.Write("Select number : ");
-        UP:
+
             try
             {
                 seclct = Int32.Parse(Console.ReadLine());
@@ -31,21 +32,37 @@ namespace Exercise_2
                 goto UP;
             }
 
-            if (seclct == 1)
+            if (seclct == 1)//Deposit
             {
-
+                Console.Write("Enter money to deposit : ");
+                cash += Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Account balance " + cash);
+                goto UP;
             }
-            if (seclct == 2)
+            if (seclct == 2)//Withdraw
             {
-
+                Console.Write("Enter money to withdraw : ");
+                int inputCash = Int32.Parse(Console.ReadLine());
+                if (inputCash > cash)
+                {
+                    Console.WriteLine("Canont withdraw becourse money will less " + cash);
+                    goto UP;
+                }
+                else
+                {
+                    cash -= inputCash;
+                    Console.WriteLine("Account balance " + cash);
+                    goto UP;
+                }
             }
-            if (seclct == 3)
+            if (seclct == 3)//Check Balance
             {
-
+                Console.WriteLine("have money : " + cash);
+                goto UP;
             }
-            if (seclct == 0)
+            if (seclct == 0)//Exit
             {
-
+                Environment.Exit(0);
             }
 
         }
